@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #06070a;
+  --color-abyss: #0c1018;
+  --color-slate: #131a24;
+  --color-cyan: #38e8ff;
+  --color-mist: #f5fbef;
+
+  --color-bg-glass: color-mix(in oklch, var(--color-slate) 50%, transparent);
+  --color-border-glass: color-mix(in oklch, var(--color-cyan) 12%, transparent);
+  --color-border-glass-hover: color-mix(in oklch, var(--color-cyan) 38%, transparent);
+  --color-text-primary: var(--color-mist);
+  --color-text-muted: color-mix(in oklch, var(--color-mist) 55%, var(--color-void));
+  --color-accent: var(--color-cyan);
+  --color-accent-glow: color-mix(in oklch, var(--color-cyan) 22%, transparent);
+
+  --font-display: var(--font-display), "Fraunces", Georgia, serif;
+  --font-sans: var(--font-sans), "Inter", system-ui, sans-serif;
+  --font-mono: var(--font-mono), monospace;
+}
+
+:root {
+  --bg-page: var(--color-void);
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-mist);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Glassmorphism 2.0 Utilities */
+.glass-panel {
+  background: rgba(12, 16, 24, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(56, 232, 255, 0.12);
+  box-shadow: 
+    0 4px 30px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel:hover {
+  border-color: rgba(56, 232, 255, 0.3);
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(56, 232, 255, 0.05),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.glass-card-interactive {
+  background: rgba(19, 26, 36, 0.5);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(56, 232, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-interactive:hover {
+  background: rgba(19, 26, 36, 0.65);
+  border-color: rgba(56, 232, 255, 0.38);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(56, 232, 255, 0.08);
+}
+
+.glass-button {
+  background: rgba(19, 26, 36, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(56, 232, 255, 0.15);
+  color: var(--color-mist);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-button:hover {
+  background: rgba(19, 26, 36, 0.85);
+  border-color: rgba(56, 232, 255, 0.5);
+  box-shadow: 0 0 15px rgba(56, 232, 255, 0.15);
+}
+
+.glass-button-primary {
+  background: #38e8ff;
+  color: #06070a;
+  border: 1px solid #38e8ff;
+  font-weight: 500;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-button-primary:hover {
+  background: #1ad9f5;
+  border-color: #1ad9f5;
+  box-shadow: 
+    0 0 20px rgba(56, 232, 255, 0.4),
+    0 0 40px rgba(56, 232, 255, 0.1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(56, 232, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 232, 255, 0.3);
+}
+
+/* Orbit Path Custom Keyframe Animation */
+@keyframes driftOrbitOne {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.15;
+  }
+  50% {
+    transform: rotate(180deg) scale(1.08);
+    opacity: 0.25;
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 0.15;
+  }
+}
+
+@keyframes driftOrbitTwo {
+  0% {
+    transform: rotate(180deg) scale(1.1);
+    opacity: 0.12;
+  }
+  50% {
+    transform: rotate(360deg) scale(0.95);
+    opacity: 0.2;
+  }
+  100% {
+    transform: rotate(540deg) scale(1.1);
+    opacity: 0.12;
+  }
+}
+
+.animate-orbit-1 {
+  animation: driftOrbitOne 50s linear infinite;
+}
+
+.animate-orbit-2 {
+  animation: driftOrbitTwo 65s linear infinite;
+}
+
+/* Slow Pulse for Glows */
+@keyframes subtlePulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+}
+
+.animate-subtle-pulse {
+  animation: subtlePulse 8s ease-in-out infinite;
+}
