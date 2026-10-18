@@ -71,7 +71,8 @@ export default function Footer() {
       links: [
         { label: "Developer forum", href: "#forum" },
         { label: "Developer docs", href: "#docs" },
-        { label: "Resources", href: "#dev-resources" }
+        { label: "Resources", href: "#dev-resources" },
+        { label: "GitHub repository", href: "https://github.com/Aeternuum/Aeternuum" }
       ]
     },
     {
@@ -230,7 +231,7 @@ export default function Footer() {
 
             {/* GitHub logo */}
             <a
-              href="https://github.com"
+              href="https://github.com/Aeternuum/Aeternuum"
               target="_blank"
               rel="noopener noreferrer"
               className="text-mist/40 hover:text-cyan hover:drop-shadow-[0_0_8px_rgba(56,232,255,0.4)] transition-all duration-150"
